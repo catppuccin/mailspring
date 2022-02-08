@@ -1,0 +1,100 @@
+@import "cat-variables";
+
+//------------------------------------------------------------
+// Contact sidebar
+//------------------------------------------------------------
+.column-MessageListSidebar {
+	background: @clrWindowBg;
+	border-left: 1px solid @clrWindowBorder;
+	padding: 10px;
+}
+
+//------------------------------------------------------------
+// Contact card
+//------------------------------------------------------------
+.sidebar-section {
+	background: @clrBodyBg;
+	border: 1px solid @clrWindowBorder;
+	border-radius: 3px;
+
+	p {
+		color: @clrText;
+	}
+}
+
+.contact-profile-photo {
+	box-shadow: none;
+	background: transparent;
+	padding: 0;
+
+	.profile-photo {
+		width: 50px;
+		height: 50px;
+
+		.default-profile-image {
+			box-shadow: none;
+			background-image: none;
+			border-radius: 50%;
+			line-height: 50px;
+			width: 50px;
+			height: 50px;
+
+			.layer {
+				border-radius: 50%;
+			}
+		}
+	}
+
+}
+
+.participant-profile,
+.company-profile {
+	.personal-info .email {
+		color: @clrText;
+	}
+
+	.larger, .larger {
+		color: @clrText;
+		font-weight: 700;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+}
+
+//------------------------------------------------------------
+// Related threads
+//------------------------------------------------------------
+.related-threads {
+	background: @clrListBg;
+	border-top: none;
+
+	.related-thread {
+		border-top: 1px solid @clrWindowBorder;
+		color: @clrTextFadedLess;
+
+		&:hover {
+			background-color: @clrListHover;
+		}
+
+		&:active {
+			background-color: @clrAccent;
+			color: @clrTextActive;
+		}
+	}
+
+	.toggle {
+		border-top: 1px solid @clrWindowBorder;
+		color: @clrButtonText;
+		font-size: 14px;
+
+		&:hover {
+			background-color: @clrButtonBgHover;
+		}
+
+		&:active {
+			background-color: @clrButtonBgActive;
+			color: @clrButtonTextActive;
+		}
+	}
+}

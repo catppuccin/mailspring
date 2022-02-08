@@ -1,0 +1,12 @@
+{
+	"name": "Catppuccin",
+  "displayName": "Catppuccin",
+  "theme": "ui",
+  "version": "1.0.0",
+  "description": "Catppuccin theme for Mailspring",
+  "license": "MIT",
+  "engines": {
+    "mailspring": "*"
+  },
+  "private": true
+}

@@ -1,0 +1,338 @@
+@import "cat-variables";
+
+//------------------------------------------------------------
+// Main window
+//------------------------------------------------------------
+.sheet-container {
+	border-top: 1px solid @clrTitlebarBorder;
+}
+
+.sheet {
+	background-color: @clrListBg;
+}
+
+//------------------------------------------------------------
+// Main toolbar
+//------------------------------------------------------------
+.sheet-toolbar {
+	border: none;
+}
+
+// Needed for activity dashboard
+body.platform-linux .sheet-toolbar-container {
+	background: @clrDashboardBg;
+}
+
+//------------------------------------------------------------
+// Controls
+//------------------------------------------------------------
+//---------------------------------
+// Input
+//---------------------------------
+.fixed-popover-container .fixed-popover input[type='text'],
+input[type='text'],
+input[type='email'],
+input[type='date'],
+input[type='datetime'],
+input[type='datetime-local'],
+input[type='month'],
+input[type='number'],
+input[type='password'],
+input[type='search'],
+input[type='tel'],
+input[type='time'],
+input[type='url'] {
+	background: @clrInputBg;
+	border: 1px solid @clrInputBorder;
+	color: @clrInputText;
+	height: 2em;
+
+	&:focus {
+		border: 1px solid @clrAccent;
+		box-shadow: inset 1px 0 @clrAccent, inset -1px 0 @clrAccent, inset 0 1px @clrAccent, inset 0 -1px @clrAccent;
+	}
+
+	&::placeholder {
+		color: @clrInputTextPlaceholder;
+	}
+}
+
+//---------------------------------
+// Button
+//---------------------------------
+.btn, .btn.btn-emphasis {
+	box-shadow: none;
+	background: @clrButtonBg;
+	border: 1px solid @clrButtonBorder;
+	color: @clrButtonText;
+	height: 2.1em;
+	font-size: 1em;
+
+	&.btn-small, &.btn-large {
+		font-size: 1em;
+		padding: 0 0.8em;
+		line-height: 1.9em;
+		height: 2.1em;
+	}
+
+	&:hover {
+		background: @clrButtonBgHover;
+		border: 1px solid @clrButtonBorderHover;
+	}
+
+	&:active {
+		background: @clrButtonBgActive;
+		border: 1px solid @clrButtonBorderActive;
+		color: @clrButtonTextActive;
+	}
+
+	&.btn-disabled,
+	&.btn-disabled:active {
+		background: @clrButtonBgDisabled;
+		border: 1px solid @clrButtonBorderDisabled;
+		color: @clrButtonTextDisabled;
+	}
+}
+
+//---------------------------------
+// Select
+//---------------------------------
+select {
+	background: @clrButtonBg;
+	border: 1px solid @clrButtonBorder;
+	border-radius: 3px;
+	color: @clrButtonText;
+	height: 2.1em;
+	padding: 0.1em 0.8em;
+
+	&:hover {
+		background: @clrButtonBgHover;
+		border: 1px solid @clrButtonBorderHover;
+	}
+
+	&:active {
+		background: @clrButtonBgActive;
+		border: 1px solid @clrButtonBorderActive;
+		color: @clrButtonTextActive;
+	}
+
+	option {
+		background: @clrPopoverBg;
+		color: @clrPopoverText;
+	}
+}
+
+//---------------------------------
+// Popover menu
+//---------------------------------
+.fixed-popover-container .fixed-popover-pointer {
+	height: 0;
+}
+
+.fixed-popover-container .fixed-popover,
+.category-picker-popover .menu,
+.category-picker-dropdown .menu,
+.dropdown-menu .menu,
+.button-dropdown.open.open-down .secondary-items,
+.button-dropdown.open.open-up .secondary-items {
+	box-shadow: 0 2px 6px 1px rgba(0, 0, 0, 0.35);
+	background: @clrPopoverBg;
+	// border: 1px solid @clrPopoverBorder;
+	border-radius: 0;
+}
+
+.fixed-popover-container .fixed-popover .menu .header-container,
+.category-picker-popover .menu .header-container,
+.category-picker-dropdown .menu .header-container,
+.menu .header-container {
+	background: @clrPopoverBg;
+}
+
+.tokenizing-field .content-container {
+	border: 1px solid @clrPopoverBorder;
+}
+
+.fixed-popover-container .fixed-popover .menu .header-container {
+	color: @clrPopoverTextFaded;
+}
+
+.menu .header-container {
+	border-bottom: 1px solid @clrPopoverBg;
+}
+
+.menu .content-container {
+	background: @clrPopoverBg;
+}
+
+.menu .footer-container,
+.button-dropdown .secondary-items .menu .footer-container {
+	background: @clrPopoverBg;
+}
+
+.template-picker .footer-container {
+	border-top: 1px solid @clrPopoverBg;
+}
+
+.message-item-white-wrap.composer-outer-wrap .composer-participant-field .dropdown-component .signature-button-dropdown .button-dropdown .secondary-items .menu .footer-container {
+	border-top: 1px solid @clrPopoverBg;
+}
+
+.button-dropdown .secondary-items .menu .item,
+.menu .item {
+	background: @clrPopoverBg;
+	color: @clrPopoverText;
+	border-radius: 0 !important;
+
+	img.content-mask {
+		background-color: @clrPopoverText;
+	}
+
+	.secondary {
+		color: @clrPopoverTextFaded;
+	}
+
+	&:not(.active):not(.selected):hover,
+	&.selected,
+	&:active {
+		background-color: @clrPopoverBgHover;
+		color: @clrPopoverTextActive;
+
+		img.content-mask {
+			background-color: @clrPopoverTextActive;
+		}
+
+		.secondary {
+			color: @clrPopoverTextActiveFaded;
+		}
+	}
+}
+
+.category-picker-popover .menu .item.divider,
+.category-picker-dropdown .menu .item.divider,
+.fixed-popover-container .fixed-popover .divider {
+	background: @clrPopoverBg;
+	border-top: 1px solid @clrPopoverBg;
+}
+
+.message-item-white-wrap.composer-outer-wrap .composer-participant-field .dropdown-component .signature-button-dropdown .button-dropdown .secondary-items .menu .item {
+	padding: 5px 20px 5px 28px;
+
+	&.checked {
+		background-image: @imgCheckChecked;
+		background-size: 16px;
+		background-position-y: 5px;
+
+		&:not(.active):not(.selected):hover,
+		&.selected,
+		&:active {
+			background-image: @imgCheckCheckedSelected;
+		}
+	}
+}
+
+.preferences-signatures-container .signature-wrap .account-picker .button-dropdown .secondary-items .menu .item {
+	padding: 5px 20px 5px 32px;
+
+	&.checked {
+		background-image: @imgCheckChecked;
+		background-size: 16px;
+		background-position-y: 7px;
+		padding: 5px 20px 5px 32px;
+
+		&:not(.active):not(.selected):hover,
+		&.selected,
+		&:active {
+			background-image: @imgCheckCheckedSelected;
+		}
+	}
+}
+
+//---------------------------------
+// Undo/redo toasts
+//---------------------------------
+.undo-redo-toast {
+	.content {
+		background: @clrToastBg;
+		border: 1px solid @clrToastBorder;
+		border-radius: 2px;
+		opacity: 0.95;
+	}
+
+	.message {
+		color: @clrToastText;
+	}
+
+	.action {
+		background: @clrToastButtonBg;
+		border: 1px solid @clrToastButtonBorder;
+		border-radius: 3px;
+
+		.undo-action-text {
+			color: @clrToastText;
+		}
+
+		img {
+			background-color: @clrToastText;
+		}
+
+		&:hover {
+			background: @clrToastButtonBgHover;
+			border: 1px solid @clrToastButtonBorderHover;
+		}
+
+		&:active {
+			background: @clrToastButtonBgActive;
+			border: 1px solid @clrToastButtonBorderActive;
+
+			.undo-action-text {
+				color: @clrToastTextActive;
+			}
+
+			img {
+				background-color: @clrToastTextActive;
+			}
+		}
+	}
+}
+
+.countdown {
+	.countdown-number {
+		color: @clrToastText;
+	}
+
+	svg circle {
+		stroke: red;
+	}
+}
+@keyframes countdown {
+	0% {
+		stroke-dashoffset: 0;
+		stroke: @clrToastText;
+	}
+	65% {
+		stroke-dashoffset: 57.2px;
+		stroke: @clrToastText;
+	}
+	100% {
+		stroke-dashoffset: 88px;
+		stroke: @clrWarningYellow;
+	}
+}
+
+//---------------------------------
+// Scrollbar tooltips
+//---------------------------------
+.scroll-tooltip {
+	box-shadow: none;
+	background: @clrToastBg;
+	border: 1px solid @clrToastBorder;
+	border-radius: 2px;
+	opacity: 0.95;
+	color: @clrToastText;
+	transform: translate(-8px, 0);
+
+	&:before,
+	&:after {
+		display: none;
+	}
+}

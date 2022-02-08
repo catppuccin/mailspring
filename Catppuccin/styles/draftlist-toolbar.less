@@ -1,0 +1,56 @@
+@import "cat-variables";
+
+//------------------------------------------------------------
+// Drafts list toolbar
+//------------------------------------------------------------
+.toolbar-DraftList {
+	height: 100%;
+	background: @clrWindowBg;
+
+	border: none;
+	border-left: 1px solid transparent;
+
+	.selection-bar .absolute {
+		background: @clrWindowBg;
+		border-color: @clrWindowBg;
+	}
+
+	//---------------------------------
+	// Toolbar buttons
+	//---------------------------------
+	.btn-toolbar {
+		box-shadow: none;
+		background: transparent;
+		border: 1px solid transparent;
+		border-radius: 3px;
+		height: 26px;
+		color: @clrToolBtnText;
+
+		img.content-mask {
+			background-color: @clrToolBtnText;
+		}
+
+		&:hover {
+			background: @clrToolBtnBgHover;
+			border-color: @clrToolBtnBorderHover;
+		}
+
+		&:active {
+			background: @clrToolBtnBgActive;
+			border-color: @clrToolBtnBorderActive;
+			color: @clrToolBtnTextActive;
+
+			img.content-mask {
+				background-color: @clrToolBtnTextActive;
+			}
+		}
+	}
+
+	//---------------------------------
+	// Toolbar text
+	//---------------------------------
+	.inner .centered {
+		padding-top: 3px;
+		color: @clrTextFadedLess !important;
+	}
+}

@@ -1,0 +1,60 @@
+@import "arc-variables";
+
+//------------------------------------------------------------
+// Theme selector window
+//------------------------------------------------------------
+.modal-container .modal {
+	background: @clrWindowBg !important;
+	border-radius: 3px !important;
+
+	.modal-close {
+		width: 16px !important;
+		height: 16px !important;
+		zoom: 0.9 !important;
+		margin: 8px;
+		content: @imgBtnClose;
+
+		&:hover {
+			content: @imgBtnCloseHover;
+		}
+
+		&:active {
+			content: @imgBtnCloseActive;
+		}
+
+		.platform-linux.is-blurred & {
+			content: @imgBtnCloseBackdrop;
+		}
+	}
+}
+
+.theme-picker {
+	h4 {
+		color: @clrText !important;
+		font-size: 15.5px;
+		margin-top: -16px;
+		margin-bottom: 0;
+	}
+
+	h4 + div {
+		color: @clrText !important;
+		font-size: 13px !important;
+	}
+
+	.create-theme {
+		margin-top: 10px;
+
+		a {
+			color: @clrLink !important;
+			text-decoration: underline;
+			cursor: pointer;
+		}
+	}
+}
+
+//------------------------------------------------------------
+// Scroll bar
+//------------------------------------------------------------
+.theme-picker .scrollbar-track {
+	.arc-scrollbar();
+}
