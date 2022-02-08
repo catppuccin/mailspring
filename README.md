@@ -5,13 +5,13 @@
 	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/dev/assets/misc/transparent.png" height="30" width="0px"/>
 </h3>
 <p align="center">
-    <a href="https://github.com/elkrien/mailspring/stargazers"><img alt="Stargazers" src="https://img.shields.io/github/stars/elkrien/mailspring?style=for-the-badge&logo=starship&color=C9CBFF&logoColor=D9E0EE&labelColor=302D41"></a>
-    <a href="https://github.com/elkrien/mailspring/issues"><img src="https://img.shields.io/github/issues/elkrien/mailspring?colorA=1e1e28&colorB=f7be95&style=for-the-badge"></a>
-    <a href="https://github.com/elkrien/mailspring/contributors"><img src="https://img.shields.io/github/contributors/elkrien/mailspring?colorA=1e1e28&colorB=b1e1a6&style=for-the-badge"></a>
+    <a href="https://github.com/catppuccin/mailspring/stargazers"><img alt="Stargazers" src="https://img.shields.io/github/stars/catppuccin/mailspring?style=for-the-badge&logo=starship&color=C9CBFF&logoColor=D9E0EE&labelColor=302D41"></a>
+    <a href="https://github.com/catppuccin/mailspring/issues"><img src="https://img.shields.io/github/issues/catppuccin/mailspring?colorA=1e1e28&colorB=f7be95&style=for-the-badge"></a>
+    <a href="https://github.com/catppuccin/mailspring/contributors"><img src="https://img.shields.io/github/contributors/catppuccin/mailspring?colorA=1e1e28&colorB=b1e1a6&style=for-the-badge"></a>
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/elkrien/mailspring/main/assets/cat-mailspring.png"/>
+  <img src="https://raw.githubusercontent.com/catppuccin/mailspring/main/assets/cat-mailspring.png"/>
 </p>
 
 
