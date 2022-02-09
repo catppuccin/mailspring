@@ -14,7 +14,6 @@
   <img src="https://raw.githubusercontent.com/catppuccin/mailspring/main/assets/cat-mailspring.png"/>
 </p>
 
-
 ## Usage
 
 1. Clone this repository.
@@ -22,6 +21,8 @@
 3. Change the current theme in `Edit > Change Theme`.
 
 ## 💝 Thanks to
+
+-   [elkrien](https://github.com/elkrien)
 
 &nbsp;
 
