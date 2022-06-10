@@ -1,0 +1,13 @@
+{
+  "name": "Catppuccin-Latte",
+  "title": "Catppuccin Latte Mailspring Theme",
+  "displayName": "Catppuccin-Latte",
+  "theme": "ui",
+  "version": "1.1.0",
+  "description": "Catppuccin theme - Latte flavour",
+  "license": "MIT",
+  "engines": {
+    "mailspring": "*"
+  }
+}
+

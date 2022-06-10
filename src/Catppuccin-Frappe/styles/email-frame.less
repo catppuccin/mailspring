@@ -1,0 +1,112 @@
+// This file, with the hardcoded name 'email-frame.less', 
+// can be used to modify the style of email messages in the
+// message list, i.e. the style of the contents of the 
+// html iframe elements within the mailspring message list.
+// There are three requirements for doing so:
+// 1) The name of this file must be 'email-frame.less'.
+// 2) There cannot be an 'index.less' (which would otherwise
+//    organizes the import order of the .less files).
+// 3) Style properties have to be placed inside a 
+//   '.ignore-in-parent-frame' parent selector.
+// The third requirement is actually more a best practice,
+// than a hard requirement.
+// These three requirements are a bit odd, but they are
+// an unavoidable consequence of the current implementation 
+// of Mailspring. 
+
+@import 'ui-variables';
+
+// Display messages as dark as possible, without 
+// sacrificing their design or readibility.
+// To this end, invert the colors of everyting that is not an image
+// or inside an html table. This makes content that was originally
+// meant to be read on a white background readible on a dark 
+// background. At the same time, emails with a custom HTML formatting
+// are kept intact.
+// The broadly valid assumption is made here that in html table
+// emails the table is not nested deeper than 4 levels below the 
+// inbox-html-wrapper. The only case I found so far where this 
+// assumption is violated, is when tables become deeply nested
+// because of blockquotes in repleated forwards/replies.
+.ignore-in-parent-frame {
+    #inbox-html-wrapper, #inbox-plain-wrapper {
+        
+        // Invert the color of everything in the message.
+        color: @text-color-prefilter !important;
+        blockquote {
+            border-color: @text-color-prefilter;
+        }
+        filter: @message-filter;
+
+        // Undo the color inversion for html tables, while 
+        // adding/restoring color elements for emails that 
+        // implicitly assume a white background.
+        > table,
+        > :not(table) > table,
+        > :not(table) > :not(table) > table,
+        > :not(table) > :not(table) > :not(table) > table {
+            padding: 10px;
+            color: black;
+            background: white !important;
+            a, a:hover, a:active {
+                color: unset;
+            }
+            filter: @message-filter-undo;
+        }
+
+        // Undo the color inversion for all images that are not
+        // part of html tables.
+        > img, 
+        > :not(table) > img,
+        > :not(table) > :not(table) > img,
+        > :not(table) > :not(table) > :not(table) > img,
+        > :not(table) > :not(table) > :not(table) > :not(table) img { 
+            filter: @message-filter-undo;
+        }
+
+        // Force a transparent background for emails that 
+        // are not based on html tables.
+        > :not(table), 
+        > :not(table) > :not(table),
+        > :not(table) > :not(table) > :not(table),
+        > :not(table) > :not(table) > :not(table) > :not(table) { 
+            background: transparent !important; // e.g. sidebars in Stack Overflow emails 
+        }
+    }
+}
+// see also composer.less!
+
+// The print version of the message requires the message
+// content to be black. The below selects the content that
+// needs to be converted to black in such a way that it only
+// applies to the print version.
+#print-header,
+h1.print-subject,
+.print-participants,
+#message-list #inbox-html-wrapper {
+    color: black;
+    a, a:hover, a:active {
+        color: unset;
+    }
+}
+
+// overwrite all color inversion filters with null operation 
+// filters of a higher css specificity 
+#message-list #inbox-html-wrapper {
+    filter: unset;
+
+    > table,
+    > :not(table) > table,
+    > :not(table) > :not(table) > table,
+    > :not(table) > :not(table) > :not(table) > table {
+        filter: unset;
+    }
+
+    > img, 
+    > :not(table) > img,
+    > :not(table) > :not(table) > img,
+    > :not(table) > :not(table) > :not(table) > img,
+    > :not(table) > :not(table) > :not(table) > :not(table) img { 
+        filter: unset;
+    }
+}

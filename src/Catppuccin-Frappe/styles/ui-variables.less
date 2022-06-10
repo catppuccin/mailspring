@@ -1,0 +1,337 @@
+@import "base/ui-variables";
+
+@accent-primary: #BABBF1;
+@accent-primary-dark: @accent-primary;
+
+@background-primary: #303446;
+@background-off-primary: #303446;
+@background-secondary: #414559;
+@background-tertiary: #414559;
+
+@border-color-primary: #292C3C;
+@border-color-secondary: #292C3C;
+@border-color-tertiary: @accent-primary;
+@border-color-divider: #292C3C;
+
+@text-color: #C6D0F5;
+@text-color-subtle: #A5ADCE;
+@text-color-very-subtle: #838BA7;
+@text-color-inverse: #C6D0F5;
+@text-color-inverse-subtle: #B5BFE2;
+@text-color-inverse-very-subtle: #B5BFE2;
+@text-color-heading: #B5BFE2;
+
+@text-color-link: @accent-primary;
+@text-color-link-hover: #F5E0DC;
+@text-color-link-active: @accent-primary;
+
+@btn-default-bg-color: #414559;
+@dropdown-default-bg-color: #414559;
+
+@input-bg: #414559;
+@input-border: #414559;
+
+@list-bg: #414559;
+@list-border: #414559;
+@list-selected-color: @text-color-inverse;
+@list-focused-color: #303446;
+
+@toolbar-background-color: #292C3C;
+@panel-background-color: #292C3C;
+
+@text-color-prefilter:    @text-base-prefilter;
+@text-base-prefilter:  spin(#fff - @text-color, 180);
+
+//Line below the toolbar
+.sheet-toolbar {
+    position: relative;
+    -webkit-app-region: drag;
+    border-bottom: 1px solid #303446;
+    }
+    
+//Right panel, left border
+.column-MessageListSidebar {
+    border-left: transparent;
+}
+
+//Message panel, right border
+.flexbox-handle-horizontal div {
+    height: 100%;
+    box-shadow: transparent;
+}
+
+// Message filter
+@message-filter:       invert(100%) hue-rotate(180deg);
+@message-filter-undo:  hue-rotate(-180deg) invert(120%); // white will be a bit fainter
+
+@text-base-prefilter:  spin(#fff - @text-color, 180);
+//@orange-prefilter:     @accent-primary; // set manually, as hue-rotate is only an approximation of spin
+//@orange-prefilter:  spin(#fff - @accent-primary, 180); // set automatically, but suboptimally
+
+//to correct the colour of the links inside the mail body after applying the prefilter
+#inbox-html-wrapper > :not(table), #inbox-plain-wrapper > :not(table), #inbox-html-wrapper > :not(table) > :not(table), #inbox-plain-wrapper > :not(table) > :not(table), #inbox-html-wrapper > :not(table) > :not(table) > :not(table), #inbox-plain-wrapper > :not(table) > :not(table) > :not(table), #inbox-html-wrapper > :not(table) > :not(table) > :not(table) > :not(table), #inbox-plain-wrapper > :not(table) > :not(table) > :not(table) > :not(table) {
+a {
+    color: #414559;
+    }
+}
+
+/* Badge with counter, secondary */
+.item-count-box:not(.selected):not(.focused) {
+  color: #303446;
+  box-shadow: 0 0.5px 0 rgba(24, 24, 37, 1), 0 -0.5px 0 rgba(24, 24, 37, 1), 0.5px 0 0 rgba(24, 24, 37, 1), -0.5px 0 0 rgba(24, 24, 37, 1);
+  background: @accent-primary
+}
+
+/* Badge with counter, primary, selected */
+.outline-view .item .item-count-box.alt-count {
+    color: @accent-primary;
+    background: #303446;
+    box-shadow: none;
+}
+
+/* Badge with counter, primary, not selected */
+.outline-view .item .item-count-box.alt-count:not(.selected):not(.focused) {
+    color: #303446;
+    background: @accent-primary;
+    box-shadow: none;
+}
+
+/* tracking icon, unopened, unfocused */
+.open-tracking-icon img.content-mask.unopened {
+    background-color: #51576d;
+}
+
+/* tracking icon, mail list, unopened, focused */
+.list-item.focused .open-tracking-icon img.content-mask.unopened, .list-item.selected .open-tracking-icon img.content-mask.unopened {
+    background-color: #51576d;
+}
+
+/* tracking icon, mail list, opened, unfocused */
+.open-tracking-icon img.content-mask.opened {
+    background-color: #C6D0F5;
+}
+
+/* tracking icon, opened, focused */
+.list-item.focused .open-tracking-icon img.content-mask.opened, .list-item.selected .open-tracking-icon img.content-mask.opened {
+    background-color: #C6D0F5;
+}
+
+/* tracking icon, message list, opened */
+.open-tracking-message-status.opened img.content-mask {
+    background-color: #C6D0F5;
+}
+
+/* tracking icon, mail list, unopened, unfocused */
+.open-tracking-icon img.content-mask.unopened {
+    background-color: #51576d;  
+}
+
+//Tracking icon, toolbar activity
+.toolbar-activity .unread-count.active {
+    background: @accent-primary;
+    color: #303446;
+}
+
+//Tracking message status opened
+.open-tracking-message-status.opened {
+    color: #C6D0F5;
+}
+
+//Tracking message status unopened
+.open-tracking-message-status.unopened {
+    color: #838BA7;
+}
+
+// Account switching icon
+.account-switcher img {
+    zoom: 1 !important;
+    max-width: 10px;
+    max-height: 6px;
+    transform: none;
+    background-image: none;
+    background-color: @text-color-very-subtle;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6"><path fill="#FFF" d="M0 0h1l4 4 4-4h1v1L5 6 0 1z"/></svg>');
+}
+
+//Activity icon colour (without accent)//
+.toolbar-activity .activity-toolbar-icon {
+    background: #A5ADCE;
+}
+
+//Search bar//
+.div.suggestions {
+    &:hover {
+    color:@accent-primary
+    }
+}
+
+//Composer button //
+.button-dropdown.btn-emphasis .primary-item, .button-dropdown.btn-emphasis .secondary-picker, .button-dropdown.btn-emphasis .only-item {
+    position: relative;
+    color: #303446;
+    font-weight: 500;
+    background: @accent-primary;
+    box-shadow: none;
+    border: 0px solid @accent-primary;
+}
+
+.button-dropdown.btn-emphasis .primary-item img.content-mask, .button-dropdown.btn-emphasis .secondary-picker img.content-mask, .button-dropdown.btn-emphasis .only-item img.content-mask {
+    background-color: #303446;
+}
+
+.button-dropdown.btn-emphasis .primary-item:active, .button-dropdown.btn-emphasis .secondary-picker:active, .button-dropdown.btn-emphasis .only-item:active {
+    background: @accent-primary;
+}
+
+//Composer name//
+.tokenizing-field .token {
+    background: linear-gradient(to bottom, #414559 0%, #51576d 100%);
+}
+
+.tokenizing-field .token.selected, .tokenizing-field .token.dragging {
+    color: #303446;
+}
+
+.tokenizing-field .token.selected .action img, .tokenizing-field .token.dragging .action img {
+    background-color: #303446;
+}
+
+//Composer dropdown list//
+.menu .item.selected, .menu .item:active {
+    background-color: #4e4947;
+    color: #C6D0F5;
+}
+
+.div.button-dropdown.open.open-down {
+    background-color: #C6D0F5;
+    color: #C6D0F5;
+}
+
+.menu .item.selected, .menu .item:active {
+    background-color: @accent-primary;
+    color: #303446;
+}
+
+.menu .item.selected .primary, .menu .item:active .primary {
+    color: #303446;
+}
+
+.menu .item.selected .secondary, .menu .item:active .secondary {
+    color: #414559;
+}
+
+//Reply button
+.button-dropdown .primary-item, .button-dropdown .only-item {
+    background: -webkit-gradient(linear, left top, left bottom, from(#414559), to(#51576d));
+}
+
+.button-dropdown .secondary-picker {
+    background: -webkit-gradient(linear, left top, left bottom, from(#414559), to(#51576d));
+}
+
+.button-dropdown.open.open-down .secondary-items {
+    background: #414559
+}
+
+//Composer unfocused
+#message-list .message-item-wrap .message-item-white-wrap.composer-outer-wrap {
+    background: #414559
+}
+
+//Composer focused, borders
+#message-list .message-item-wrap .message-item-white-wrap.composer-outer-wrap.focused {
+    box-shadow: 0 0 0.5px rgba(0, 0, 0, 0.28), 0 1px 1.5px rgba(0, 0, 0, 0.08), 0 0 3px @accent-primary;
+}
+
+.composer-inner-wrap .composer-action-bar-wrap .composer-action-bar-content.unfocused {
+    background-color: #414559;
+}
+
+//Unsubscribe action
+.unsubscribe-action {
+    color: @accent-primary;
+    text-decoration: underline;
+}
+
+//Undo/redo floating message
+.undo-redo-toast .content {
+    background: @accent-primary;
+}
+
+//Preferences, accounts details, background colour
+.preferences-wrap .container-accounts .accounts-content .account-details {
+    background-color: #303446;
+}
+    
+//Preferences, account lists, background colour
+.nylas-editable-list .items-wrapper {
+    background-color: #414559;
+}
+
+
+// Remove box-shadow on thread list quick action buttons
+.thread-injected-quick-actions .btn {
+  box-shadow: none;
+}
+
+// Remove gradients quick action buttons
+.thread-list .list-item .list-column-HoverActions .action.action-trash {
+  background: url('../static/images/thread-list-quick-actions/ic-quick-button-trash@2x.png') center
+      no-repeat,
+    @accent-primary;
+}
+
+// Remove gradients quick action buttons
+.thread-list .list-item .list-column-HoverActions .action.action-archive {
+  background: url('../static/images/thread-list-quick-actions/ic-quick-button-archive@2x.png')
+      center no-repeat,
+    @accent-primary;
+}
+
+// Remove gradients quick action buttons
+.thread-list .list-item .list-column-HoverActions .action.action-snooze {
+  background: url('../static/images/thread-list-quick-actions/ic-quickaction-snooze@2x.png') center
+      no-repeat,
+    @accent-primary;
+}
+
+// Change default color of star to gray
+.thread-list .thread-icon.thread-icon-star,
+.draft-list .thread-icon.thread-icon-star {
+  filter: grayscale(100%);
+}
+
+// Change color on message button
+#message-list {
+	// Labels
+	.mail-label.removable {
+		color: #303446 !important;
+		background: @accent-primary !important;
+    box-shadow: none !important;
+	}
+}
+
+// Change color of unread mail dot
+.thread-list, .draft-list {
+	.thread-icon {
+			&.thread-icon-unread {
+        filter: grayscale(100%);
+					}
+	}
+}
+
+//Changing the colour of the attachment icon
+.thread-icon:not(.thread-icon-unread):not(.thread-icon-star) {
+-webkit-filter: invert(100%);
+}
+img.content-dark {
+-webkit-filter: invert(100%);
+}
+img.content-light {
+-webkit-filter: invert(100%);
+}
+
+.mail-label {
+-webkit-filter: contrast(110%) brightness(85%);
+}

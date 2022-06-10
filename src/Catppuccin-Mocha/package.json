@@ -1,0 +1,13 @@
+{
+  "name": "Catppuccin-Mocha",
+  "title": "Catppuccin Mocha Mailspring Theme",
+  "displayName": "Catppuccin-Mocha",
+  "theme": "ui",
+  "version": "1.1.0",
+  "description": "Catppuccin theme - Mocha flavour",
+  "license": "MIT",
+  "engines": {
+    "mailspring": "*"
+  }
+}
+
