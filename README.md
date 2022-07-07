@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/catppuccin/mailspring/main/assets/cat-mailspring.png"/>
+  <img src="assets/cat-mailspring.png"/>
 </p>
 
 ## Usage
