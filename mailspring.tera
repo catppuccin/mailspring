@@ -1,43 +1,67 @@
+---
+accent: lavender
+whiskers:
+  version: 2.4.0
+  matrix:
+    - flavor
+    - file: ["styles/email-frame.less", "styles/ui-variables.less", "package.json"]
+  filename: "src/Catppuccin-{{ flavor.identifier | capitalize }}/{{ file }}"
+  hex_format: "{{R}}{{G}}{{B}}"
+---
+{%- if file == "package.json" -%}
+{
+  "name": "Catppuccin-{{ flavor.identifier | capitalize }}",
+  "title": "Catppuccin {{ flavor.identifier | capitalize }} Mailspring Theme",
+  "displayName": "Catppuccin-{{ flavor.identifier | capitalize }}",
+  "theme": "ui",
+  "version": "1.1.1",
+  "description": "Catppuccin theme - {{ flavor.identifier | capitalize }} flavour",
+  "license": "MIT",
+  "engines": {
+    "mailspring": "*"
+  }
+}
+{%- elif file == "styles/ui-variables.less" -%}
 @import "base/ui-variables";
 
-@accent-primary: #7287FD;
+@accent-primary: #{{ flavor.colors[accent].hex }};
 @accent-primary-dark: @accent-primary;
 
-@background-primary: #EFF1F5;
-@background-off-primary: #EFF1F5;
-@background-secondary: #CCD0DA;
-@background-tertiary: #CCD0DA;
+@background-primary: #{{ base.hex }};
+@background-off-primary: #{{ base.hex }};
+@background-secondary: #{{ surface0.hex }};
+@background-tertiary: #{{ surface0.hex }};
 
-@border-color-primary: #E6E9EF;
-@border-color-secondary: #E6E9EF;
+@border-color-primary: #{{ mantle.hex }};
+@border-color-secondary: #{{ mantle.hex }};
 @border-color-tertiary: @accent-primary;
-@border-color-divider: #E6E9EF;
+@border-color-divider: #{{ mantle.hex }};
 
-@text-color: #4C4F69;
-@text-color-subtle: #6C6F85;
-@text-color-very-subtle: #8C8FA1;
-@text-color-inverse: #4C4F69;
-@text-color-inverse-subtle: #5C5F77;
-@text-color-inverse-very-subtle: #5C5F77;
-@text-color-heading: #5C5F77;
+@text-color: #{{ text.hex }};
+@text-color-subtle: #{{ subtext0.hex }};
+@text-color-very-subtle: #{{ overlay1.hex }};
+@text-color-inverse: #{{ text.hex }};
+@text-color-inverse-subtle: #{{ subtext1.hex }};
+@text-color-inverse-very-subtle: #{{ subtext1.hex }};
+@text-color-heading: #{{ subtext1.hex }};
 
 @text-color-link: @accent-primary;
-@text-color-link-hover: #DC8A78;
+@text-color-link-hover: #{{ rosewater.hex }};
 @text-color-link-active: @accent-primary;
 
-@btn-default-bg-color: #CCD0DA;
-@dropdown-default-bg-color: #CCD0DA;
+@btn-default-bg-color: #{{ surface0.hex }};
+@dropdown-default-bg-color: #{{ surface0.hex }};
 
-@input-bg: #CCD0DA;
-@input-border: #CCD0DA;
+@input-bg: #{{ surface0.hex }};
+@input-border: #{{ surface0.hex }};
 
-@list-bg: #CCD0DA;
-@list-border: #CCD0DA;
+@list-bg: #{{ surface0.hex }};
+@list-border: #{{ surface0.hex }};
 @list-selected-color: @text-color-inverse;
-@list-focused-color: #EFF1F5;
+@list-focused-color: #{{ base.hex }};
 
-@toolbar-background-color: #E6E9EF;
-@panel-background-color: #E6E9EF;
+@toolbar-background-color: #{{ mantle.hex }};
+@panel-background-color: #{{ mantle.hex }};
 
 @text-color-prefilter:    @text-base-prefilter;
 @text-base-prefilter:  spin(#fff - @text-color, 180);
@@ -46,7 +70,7 @@
 .sheet-toolbar {
     position: relative;
     -webkit-app-region: drag;
-    border-bottom: 1px solid #EFF1F5;
+    border-bottom: 1px solid #{{ base.hex }};
     }
 
 //Right panel, left border
@@ -71,13 +95,13 @@
 //to correct the colour of the links inside the mail body after applying the prefilter
 #inbox-html-wrapper > :not(table), #inbox-plain-wrapper > :not(table), #inbox-html-wrapper > :not(table) > :not(table), #inbox-plain-wrapper > :not(table) > :not(table), #inbox-html-wrapper > :not(table) > :not(table) > :not(table), #inbox-plain-wrapper > :not(table) > :not(table) > :not(table), #inbox-html-wrapper > :not(table) > :not(table) > :not(table) > :not(table), #inbox-plain-wrapper > :not(table) > :not(table) > :not(table) > :not(table) {
 a {
-    color: #CCD0DA;
+    color: #{{ surface0.hex }};
     }
 }
 
 /* Badge with counter, secondary */
 .item-count-box:not(.selected):not(.focused) {
-  color: #EFF1F5;
+  color: #{{ base.hex }};
   box-shadow: 0 0.5px 0 rgba(24, 24, 37, 1), 0 -0.5px 0 rgba(24, 24, 37, 1), 0.5px 0 0 rgba(24, 24, 37, 1), -0.5px 0 0 rgba(24, 24, 37, 1);
   background: @accent-primary
 }
@@ -85,66 +109,66 @@ a {
 /* Badge with counter, primary, selected */
 .outline-view .item .item-count-box.alt-count {
     color: @accent-primary;
-    background: #EFF1F5;
+    background: #{{ base.hex }};
     box-shadow: none;
 }
 
 /* Badge with counter, primary, not selected */
 .outline-view .item .item-count-box.alt-count:not(.selected):not(.focused) {
-    color: #EFF1F5;
+    color: #{{ base.hex }};
     background: @accent-primary;
     box-shadow: none;
 }
 
 /* tracking icon, unopened, unfocused */
 .open-tracking-icon img.content-mask.unopened {
-    background-color: #BCC0CC;
+    background-color: #{{ surface1.hex }};
 }
 
 /* tracking icon, mail list, unopened, focused */
 .list-item.focused .open-tracking-icon img.content-mask.unopened, .list-item.selected .open-tracking-icon img.content-mask.unopened {
-    background-color: #BCC0CC;
+    background-color: #{{ surface1.hex }};
 }
 
 /* tracking icon, mail list, opened, unfocused */
 .open-tracking-icon img.content-mask.opened {
-    background-color: #4C4F69;
+    background-color: #{{ text.hex }};
 }
 
 /* tracking icon, opened, focused */
 .list-item.focused .open-tracking-icon img.content-mask.opened, .list-item.selected .open-tracking-icon img.content-mask.opened {
-    background-color: #4C4F69;
+    background-color: #{{ text.hex }};
 }
 
 /* tracking icon, message list, opened */
 .open-tracking-message-status.opened img.content-mask {
-    background-color: #4C4F69;
+    background-color: #{{ text.hex }};
 }
 
 /* tracking icon, message list, focused, more than one selected */
 .thread-list.handler-split .list-item.selected {
-    color: #EFF1F5;
+    color: #{{ base.hex }};
 }
 
 /* tracking icon, mail list, unopened, unfocused */
 .open-tracking-icon img.content-mask.unopened {
-    background-color: #BCC0CC;
+    background-color: #{{ surface1.hex }};
 }
 
 //Tracking icon, toolbar activity
 .toolbar-activity .unread-count.active {
     background: @accent-primary;
-    color: #EFF1F5;
+    color: #{{ base.hex }};
 }
 
 //Tracking message status opened
 .open-tracking-message-status.opened {
-    color: #4C4F69;
+    color: #{{ text.hex }};
 }
 
 //Tracking message status unopened
 .open-tracking-message-status.unopened {
-    color: #8C8FA1;
+    color: #{{ overlay1.hex }};
 }
 
 // Account switching icon
@@ -161,7 +185,7 @@ a {
 
 //Activity icon colour (without accent)//
 .toolbar-activity .activity-toolbar-icon {
-    background: #6C6F85;
+    background: #{{ subtext0.hex }};
 }
 
 //Search bar//
@@ -174,7 +198,7 @@ a {
 //Composer button //
 .button-dropdown.btn-emphasis .primary-item, .button-dropdown.btn-emphasis .secondary-picker, .button-dropdown.btn-emphasis .only-item {
     position: relative;
-    color: #EFF1F5;
+    color: #{{ base.hex }};
     font-weight: 500;
     background: @accent-primary;
     box-shadow: none;
@@ -182,7 +206,7 @@ a {
 }
 
 .button-dropdown.btn-emphasis .primary-item img.content-mask, .button-dropdown.btn-emphasis .secondary-picker img.content-mask, .button-dropdown.btn-emphasis .only-item img.content-mask {
-    background-color: #EFF1F5;
+    background-color: #{{ base.hex }};
 }
 
 .button-dropdown.btn-emphasis .primary-item:active, .button-dropdown.btn-emphasis .secondary-picker:active, .button-dropdown.btn-emphasis .only-item:active {
@@ -191,57 +215,57 @@ a {
 
 //Composer name//
 .tokenizing-field .token {
-    background: linear-gradient(to bottom, #CCD0DA 0%, #BCC0CC 100%);
+    background: linear-gradient(to bottom, #{{ surface0.hex }} 0%, #{{ surface1.hex }} 100%);
 }
 
 .tokenizing-field .token.selected, .tokenizing-field .token.dragging {
-    color: #EFF1F5;
+    color: #{{ base.hex }};
 }
 
 .tokenizing-field .token.selected .action img, .tokenizing-field .token.dragging .action img {
-    background-color: #EFF1F5;
+    background-color: #{{ base.hex }};
 }
 
 //Composer dropdown list//
 .menu .item.selected, .menu .item:active {
     background-color: #4e4947;
-    color: #4C4F69;
+    color: #{{ text.hex }};
 }
 
 .div.button-dropdown.open.open-down {
-    background-color: #4C4F69;
-    color: #4C4F69;
+    background-color: #{{ text.hex }};
+    color: #{{ text.hex }};
 }
 
 .menu .item.selected, .menu .item:active {
     background-color: @accent-primary;
-    color: #EFF1F5;
+    color: #{{ base.hex }};
 }
 
 .menu .item.selected .primary, .menu .item:active .primary {
-    color: #EFF1F5;
+    color: #{{ base.hex }};
 }
 
 .menu .item.selected .secondary, .menu .item:active .secondary {
-    color: #CCD0DA;
+    color: #{{ surface0.hex }};
 }
 
 //Reply button
 .button-dropdown .primary-item, .button-dropdown .only-item {
-    background: -webkit-gradient(linear, left top, left bottom, from(#CCD0DA), to(#BCC0CC));
+    background: -webkit-gradient(linear, left top, left bottom, from(#{{ surface0.hex }}), to(#{{ surface1.hex }}));
 }
 
 .button-dropdown .secondary-picker {
-    background: -webkit-gradient(linear, left top, left bottom, from(#CCD0DA), to(#BCC0CC));
+    background: -webkit-gradient(linear, left top, left bottom, from(#{{ surface0.hex }}), to(#{{ surface1.hex }}));
 }
 
 .button-dropdown.open.open-down .secondary-items {
-    background: #CCD0DA
+    background: #{{ surface0.hex }}
 }
 
 //Composer unfocused
 #message-list .message-item-wrap .message-item-white-wrap.composer-outer-wrap {
-    background: #CCD0DA
+    background: #{{ surface0.hex }}
 }
 
 //Composer focused, borders
@@ -250,7 +274,7 @@ a {
 }
 
 .composer-inner-wrap .composer-action-bar-wrap .composer-action-bar-content.unfocused {
-    background-color: #CCD0DA;
+    background-color: #{{ surface0.hex }};
 }
 
 //Unsubscribe action
@@ -266,12 +290,12 @@ a {
 
 //Preferences, accounts details, background colour
 .preferences-wrap .container-accounts .accounts-content .account-details {
-    background-color: #EFF1F5;
+    background-color: #{{ base.hex }};
 }
 
 //Preferences, account lists, background colour
 .nylas-editable-list .items-wrapper {
-    background-color: #CCD0DA;
+    background-color: #{{ surface0.hex }};
 }
 
 
@@ -311,7 +335,7 @@ a {
 #message-list {
 	// Labels
 	.mail-label.removable {
-		color: #EFF1F5 !important;
+		color: #{{ base.hex }} !important;
 		background: @accent-primary !important;
     box-shadow: none !important;
 	}
@@ -340,3 +364,117 @@ img.content-light {
 .mail-label {
 -webkit-filter: contrast(110%) brightness(85%);
 }
+{%- else -%}
+// This file, with the hardcoded name 'email-frame.less',
+// can be used to modify the style of email messages in the
+// message list, i.e. the style of the contents of the
+// html iframe elements within the mailspring message list.
+// There are three requirements for doing so:
+// 1) The name of this file must be 'email-frame.less'.
+// 2) There cannot be an 'index.less' (which would otherwise
+//    organizes the import order of the .less files).
+// 3) Style properties have to be placed inside a
+//   '.ignore-in-parent-frame' parent selector.
+// The third requirement is actually more a best practice,
+// than a hard requirement.
+// These three requirements are a bit odd, but they are
+// an unavoidable consequence of the current implementation
+// of Mailspring.
+
+@import 'ui-variables';
+
+// Display messages as dark as possible, without
+// sacrificing their design or readibility.
+// To this end, invert the colors of everyting that is not an image
+// or inside an html table. This makes content that was originally
+// meant to be read on a white background readible on a dark
+// background. At the same time, emails with a custom HTML formatting
+// are kept intact.
+// The broadly valid assumption is made here that in html table
+// emails the table is not nested deeper than 4 levels below the
+// inbox-html-wrapper. The only case I found so far where this
+// assumption is violated, is when tables become deeply nested
+// because of blockquotes in repleated forwards/replies.
+.ignore-in-parent-frame {
+    #inbox-html-wrapper, #inbox-plain-wrapper {
+
+        // Invert the color of everything in the message.
+        color: @text-color-prefilter !important;
+        blockquote {
+            border-color: @text-color-prefilter;
+        }
+        filter: @message-filter;
+
+        // Undo the color inversion for html tables, while
+        // adding/restoring color elements for emails that
+        // implicitly assume a white background.
+        > table,
+        > :not(table) > table,
+        > :not(table) > :not(table) > table,
+        > :not(table) > :not(table) > :not(table) > table {
+            padding: 10px;
+            color: black;
+            background: white !important;
+            a, a:hover, a:active {
+                color: unset;
+            }
+            filter: @message-filter-undo;
+        }
+
+        // Undo the color inversion for all images that are not
+        // part of html tables.
+        > img,
+        > :not(table) > img,
+        > :not(table) > :not(table) > img,
+        > :not(table) > :not(table) > :not(table) > img,
+        > :not(table) > :not(table) > :not(table) > :not(table) img {
+            filter: @message-filter-undo;
+        }
+
+        // Force a transparent background for emails that
+        // are not based on html tables.
+        > :not(table),
+        > :not(table) > :not(table),
+        > :not(table) > :not(table) > :not(table),
+        > :not(table) > :not(table) > :not(table) > :not(table) {
+            background: transparent !important; // e.g. sidebars in Stack Overflow emails
+        }
+    }
+}
+// see also composer.less!
+
+// The print version of the message requires the message
+// content to be black. The below selects the content that
+// needs to be converted to black in such a way that it only
+// applies to the print version.
+#print-header,
+h1.print-subject,
+.print-participants,
+#message-list #inbox-html-wrapper {
+    color: black;
+    a, a:hover, a:active {
+        color: unset;
+    }
+}
+
+// overwrite all color inversion filters with null operation
+// filters of a higher css specificity
+#message-list #inbox-html-wrapper {
+    filter: unset;
+
+    > table,
+    > :not(table) > table,
+    > :not(table) > :not(table) > table,
+    > :not(table) > :not(table) > :not(table) > table {
+        filter: unset;
+    }
+
+    > img,
+    > :not(table) > img,
+    > :not(table) > :not(table) > img,
+    > :not(table) > :not(table) > :not(table) > img,
+    > :not(table) > :not(table) > :not(table) > :not(table) img {
+        filter: unset;
+    }
+}
+{%- endif %}
