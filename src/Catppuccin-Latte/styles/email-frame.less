@@ -1,36 +1,36 @@
-// This file, with the hardcoded name 'email-frame.less', 
+// This file, with the hardcoded name 'email-frame.less',
 // can be used to modify the style of email messages in the
-// message list, i.e. the style of the contents of the 
+// message list, i.e. the style of the contents of the
 // html iframe elements within the mailspring message list.
 // There are three requirements for doing so:
 // 1) The name of this file must be 'email-frame.less'.
 // 2) There cannot be an 'index.less' (which would otherwise
 //    organizes the import order of the .less files).
-// 3) Style properties have to be placed inside a 
+// 3) Style properties have to be placed inside a
 //   '.ignore-in-parent-frame' parent selector.
 // The third requirement is actually more a best practice,
 // than a hard requirement.
 // These three requirements are a bit odd, but they are
-// an unavoidable consequence of the current implementation 
-// of Mailspring. 
+// an unavoidable consequence of the current implementation
+// of Mailspring.
 
 @import 'ui-variables';
 
-// Display messages as dark as possible, without 
+// Display messages as dark as possible, without
 // sacrificing their design or readibility.
 // To this end, invert the colors of everyting that is not an image
 // or inside an html table. This makes content that was originally
-// meant to be read on a white background readible on a dark 
+// meant to be read on a white background readible on a dark
 // background. At the same time, emails with a custom HTML formatting
 // are kept intact.
 // The broadly valid assumption is made here that in html table
-// emails the table is not nested deeper than 4 levels below the 
-// inbox-html-wrapper. The only case I found so far where this 
+// emails the table is not nested deeper than 4 levels below the
+// inbox-html-wrapper. The only case I found so far where this
 // assumption is violated, is when tables become deeply nested
 // because of blockquotes in repleated forwards/replies.
 .ignore-in-parent-frame {
     #inbox-html-wrapper, #inbox-plain-wrapper {
-        
+
         // Invert the color of everything in the message.
         color: @text-color-prefilter !important;
         blockquote {
@@ -38,8 +38,8 @@
         }
         filter: @message-filter;
 
-        // Undo the color inversion for html tables, while 
-        // adding/restoring color elements for emails that 
+        // Undo the color inversion for html tables, while
+        // adding/restoring color elements for emails that
         // implicitly assume a white background.
         > table,
         > :not(table) > table,
@@ -56,21 +56,21 @@
 
         // Undo the color inversion for all images that are not
         // part of html tables.
-        > img, 
+        > img,
         > :not(table) > img,
         > :not(table) > :not(table) > img,
         > :not(table) > :not(table) > :not(table) > img,
-        > :not(table) > :not(table) > :not(table) > :not(table) img { 
+        > :not(table) > :not(table) > :not(table) > :not(table) img {
             filter: @message-filter-undo;
         }
 
-        // Force a transparent background for emails that 
+        // Force a transparent background for emails that
         // are not based on html tables.
-        > :not(table), 
+        > :not(table),
         > :not(table) > :not(table),
         > :not(table) > :not(table) > :not(table),
-        > :not(table) > :not(table) > :not(table) > :not(table) { 
-            background: transparent !important; // e.g. sidebars in Stack Overflow emails 
+        > :not(table) > :not(table) > :not(table) > :not(table) {
+            background: transparent !important; // e.g. sidebars in Stack Overflow emails
         }
     }
 }
@@ -90,8 +90,8 @@ h1.print-subject,
     }
 }
 
-// overwrite all color inversion filters with null operation 
-// filters of a higher css specificity 
+// overwrite all color inversion filters with null operation
+// filters of a higher css specificity
 #message-list #inbox-html-wrapper {
     filter: unset;
 
@@ -102,11 +102,11 @@ h1.print-subject,
         filter: unset;
     }
 
-    > img, 
+    > img,
     > :not(table) > img,
     > :not(table) > :not(table) > img,
     > :not(table) > :not(table) > :not(table) > img,
-    > :not(table) > :not(table) > :not(table) > :not(table) img { 
+    > :not(table) > :not(table) > :not(table) > :not(table) img {
         filter: unset;
     }
 }
