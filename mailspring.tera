@@ -46,7 +46,7 @@ whiskers:
 @text-color-heading: #{{ subtext1.hex }};
 
 @text-color-link: @accent-primary;
-@text-color-link-hover: #{{ rosewater.hex }};
+@text-color-link-hover: #{{ blue.hex }};
 @text-color-link-active: @accent-primary;
 
 @btn-default-bg-color: #{{ surface0.hex }};
