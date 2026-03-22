@@ -1,21 +1,21 @@
 ---
-accent: lavender
 whiskers:
-  version: 2.4.0
+  version: "^2.4.0"
   matrix:
     - flavor
     - file: ["styles/email-frame.less", "styles/ui-variables.less", "package.json"]
-  filename: "src/Catppuccin-{{ flavor.identifier | capitalize }}/{{ file }}"
-  hex_format: "{{R}}{{G}}{{B}}"
+  filename: "src/Catppuccin-{{ flavor.name }}/{{ file }}"
+  hex_format: "#{{R}}{{G}}{{B}}{{Z}}"
+accent: "lavender"
 ---
 {%- if file == "package.json" -%}
 {
-  "name": "Catppuccin-{{ flavor.identifier | capitalize }}",
-  "title": "Catppuccin {{ flavor.identifier | capitalize }} Mailspring Theme",
-  "displayName": "Catppuccin-{{ flavor.identifier | capitalize }}",
+  "name": "Catppuccin-{{ flavor.name }}",
+  "title": "Catppuccin {{ flavor.name }} Mailspring Theme",
+  "displayName": "Catppuccin-{{ flavor.name }}",
   "theme": "ui",
   "version": "1.1.1",
-  "description": "Catppuccin theme - {{ flavor.identifier | capitalize }} flavour",
+  "description": "Catppuccin theme - {{ flavor.name }} flavour",
   "license": "MIT",
   "engines": {
     "mailspring": "*"
@@ -24,44 +24,44 @@ whiskers:
 {%- elif file == "styles/ui-variables.less" -%}
 @import "base/ui-variables";
 
-@accent-primary: #{{ flavor.colors[accent].hex }};
+@accent-primary: {{ flavor.colors[accent].hex }};
 @accent-primary-dark: @accent-primary;
 
-@background-primary: #{{ base.hex }};
-@background-off-primary: #{{ base.hex }};
-@background-secondary: #{{ surface0.hex }};
-@background-tertiary: #{{ surface0.hex }};
+@background-primary: {{ base.hex }};
+@background-off-primary: {{ base.hex }};
+@background-secondary: {{ surface0.hex }};
+@background-tertiary: {{ surface0.hex }};
 
-@border-color-primary: #{{ mantle.hex }};
-@border-color-secondary: #{{ mantle.hex }};
+@border-color-primary: {{ mantle.hex }};
+@border-color-secondary: {{ mantle.hex }};
 @border-color-tertiary: @accent-primary;
-@border-color-divider: #{{ mantle.hex }};
+@border-color-divider: {{ mantle.hex }};
 
-@text-color: #{{ text.hex }};
-@text-color-subtle: #{{ subtext0.hex }};
-@text-color-very-subtle: #{{ overlay1.hex }};
-@text-color-inverse: #{{ text.hex }};
-@text-color-inverse-subtle: #{{ subtext1.hex }};
-@text-color-inverse-very-subtle: #{{ subtext1.hex }};
-@text-color-heading: #{{ subtext1.hex }};
+@text-color: {{ text.hex }};
+@text-color-subtle: {{ subtext0.hex }};
+@text-color-very-subtle: {{ overlay1.hex }};
+@text-color-inverse: {{ text.hex }};
+@text-color-inverse-subtle: {{ subtext1.hex }};
+@text-color-inverse-very-subtle: {{ subtext1.hex }};
+@text-color-heading: {{ subtext1.hex }};
 
 @text-color-link: @accent-primary;
-@text-color-link-hover: #{{ rosewater.hex }};
+@text-color-link-hover: {{ rosewater.hex }};
 @text-color-link-active: @accent-primary;
 
-@btn-default-bg-color: #{{ surface0.hex }};
-@dropdown-default-bg-color: #{{ surface0.hex }};
+@btn-default-bg-color: {{ surface0.hex }};
+@dropdown-default-bg-color: {{ surface0.hex }};
 
-@input-bg: #{{ surface0.hex }};
-@input-border: #{{ surface0.hex }};
+@input-bg: {{ surface0.hex }};
+@input-border: {{ surface0.hex }};
 
-@list-bg: #{{ surface0.hex }};
-@list-border: #{{ surface0.hex }};
+@list-bg: {{ surface0.hex }};
+@list-border: {{ surface0.hex }};
 @list-selected-color: @text-color-inverse;
-@list-focused-color: #{{ base.hex }};
+@list-focused-color: {{ base.hex }};
 
-@toolbar-background-color: #{{ mantle.hex }};
-@panel-background-color: #{{ mantle.hex }};
+@toolbar-background-color: {{ mantle.hex }};
+@panel-background-color: {{ mantle.hex }};
 
 @text-color-prefilter:    @text-base-prefilter;
 @text-base-prefilter:  spin(#fff - @text-color, 180);
@@ -70,7 +70,7 @@ whiskers:
 .sheet-toolbar {
     position: relative;
     -webkit-app-region: drag;
-    border-bottom: 1px solid #{{ base.hex }};
+    border-bottom: 1px solid {{ base.hex }};
     }
 
 //Right panel, left border
@@ -95,13 +95,13 @@ whiskers:
 //to correct the colour of the links inside the mail body after applying the prefilter
 #inbox-html-wrapper > :not(table), #inbox-plain-wrapper > :not(table), #inbox-html-wrapper > :not(table) > :not(table), #inbox-plain-wrapper > :not(table) > :not(table), #inbox-html-wrapper > :not(table) > :not(table) > :not(table), #inbox-plain-wrapper > :not(table) > :not(table) > :not(table), #inbox-html-wrapper > :not(table) > :not(table) > :not(table) > :not(table), #inbox-plain-wrapper > :not(table) > :not(table) > :not(table) > :not(table) {
 a {
-    color: #{{ surface0.hex }};
+    color: {{ surface0.hex }};
     }
 }
 
 /* Badge with counter, secondary */
 .item-count-box:not(.selected):not(.focused) {
-  color: #{{ base.hex }};
+  color: {{ base.hex }};
   box-shadow: 0 0.5px 0 rgba(24, 24, 37, 1), 0 -0.5px 0 rgba(24, 24, 37, 1), 0.5px 0 0 rgba(24, 24, 37, 1), -0.5px 0 0 rgba(24, 24, 37, 1);
   background: @accent-primary
 }
@@ -109,66 +109,66 @@ a {
 /* Badge with counter, primary, selected */
 .outline-view .item .item-count-box.alt-count {
     color: @accent-primary;
-    background: #{{ base.hex }};
+    background: {{ base.hex }};
     box-shadow: none;
 }
 
 /* Badge with counter, primary, not selected */
 .outline-view .item .item-count-box.alt-count:not(.selected):not(.focused) {
-    color: #{{ base.hex }};
+    color: {{ base.hex }};
     background: @accent-primary;
     box-shadow: none;
 }
 
 /* tracking icon, unopened, unfocused */
 .open-tracking-icon img.content-mask.unopened {
-    background-color: #{{ surface1.hex }};
+    background-color: {{ surface1.hex }};
 }
 
 /* tracking icon, mail list, unopened, focused */
 .list-item.focused .open-tracking-icon img.content-mask.unopened, .list-item.selected .open-tracking-icon img.content-mask.unopened {
-    background-color: #{{ surface1.hex }};
+    background-color: {{ surface1.hex }};
 }
 
 /* tracking icon, mail list, opened, unfocused */
 .open-tracking-icon img.content-mask.opened {
-    background-color: #{{ text.hex }};
+    background-color: {{ text.hex }};
 }
 
 /* tracking icon, opened, focused */
 .list-item.focused .open-tracking-icon img.content-mask.opened, .list-item.selected .open-tracking-icon img.content-mask.opened {
-    background-color: #{{ text.hex }};
+    background-color: {{ text.hex }};
 }
 
 /* tracking icon, message list, opened */
 .open-tracking-message-status.opened img.content-mask {
-    background-color: #{{ text.hex }};
+    background-color: {{ text.hex }};
 }
 
 /* tracking icon, message list, focused, more than one selected */
 .thread-list.handler-split .list-item.selected {
-    color: #{{ base.hex }};
+    color: {{ base.hex }};
 }
 
 /* tracking icon, mail list, unopened, unfocused */
 .open-tracking-icon img.content-mask.unopened {
-    background-color: #{{ surface1.hex }};
+    background-color: {{ surface1.hex }};
 }
 
 //Tracking icon, toolbar activity
 .toolbar-activity .unread-count.active {
     background: @accent-primary;
-    color: #{{ base.hex }};
+    color: {{ base.hex }};
 }
 
 //Tracking message status opened
 .open-tracking-message-status.opened {
-    color: #{{ text.hex }};
+    color: {{ text.hex }};
 }
 
 //Tracking message status unopened
 .open-tracking-message-status.unopened {
-    color: #{{ overlay1.hex }};
+    color: {{ overlay1.hex }};
 }
 
 // Account switching icon
@@ -185,7 +185,7 @@ a {
 
 //Activity icon colour (without accent)//
 .toolbar-activity .activity-toolbar-icon {
-    background: #{{ subtext0.hex }};
+    background: {{ subtext0.hex }};
 }
 
 //Search bar//
@@ -198,7 +198,7 @@ a {
 //Composer button //
 .button-dropdown.btn-emphasis .primary-item, .button-dropdown.btn-emphasis .secondary-picker, .button-dropdown.btn-emphasis .only-item {
     position: relative;
-    color: #{{ base.hex }};
+    color: {{ base.hex }};
     font-weight: 500;
     background: @accent-primary;
     box-shadow: none;
@@ -206,7 +206,7 @@ a {
 }
 
 .button-dropdown.btn-emphasis .primary-item img.content-mask, .button-dropdown.btn-emphasis .secondary-picker img.content-mask, .button-dropdown.btn-emphasis .only-item img.content-mask {
-    background-color: #{{ base.hex }};
+    background-color: {{ base.hex }};
 }
 
 .button-dropdown.btn-emphasis .primary-item:active, .button-dropdown.btn-emphasis .secondary-picker:active, .button-dropdown.btn-emphasis .only-item:active {
@@ -215,57 +215,57 @@ a {
 
 //Composer name//
 .tokenizing-field .token {
-    background: linear-gradient(to bottom, #{{ surface0.hex }} 0%, #{{ surface1.hex }} 100%);
+    background: linear-gradient(to bottom, {{ surface0.hex }} 0%, {{ surface1.hex }} 100%);
 }
 
 .tokenizing-field .token.selected, .tokenizing-field .token.dragging {
-    color: #{{ base.hex }};
+    color: {{ base.hex }};
 }
 
 .tokenizing-field .token.selected .action img, .tokenizing-field .token.dragging .action img {
-    background-color: #{{ base.hex }};
+    background-color: {{ base.hex }};
 }
 
 //Composer dropdown list//
 .menu .item.selected, .menu .item:active {
     background-color: #4e4947;
-    color: #{{ text.hex }};
+    color: {{ text.hex }};
 }
 
 .div.button-dropdown.open.open-down {
-    background-color: #{{ text.hex }};
-    color: #{{ text.hex }};
+    background-color: {{ text.hex }};
+    color: {{ text.hex }};
 }
 
 .menu .item.selected, .menu .item:active {
     background-color: @accent-primary;
-    color: #{{ base.hex }};
+    color: {{ base.hex }};
 }
 
 .menu .item.selected .primary, .menu .item:active .primary {
-    color: #{{ base.hex }};
+    color: {{ base.hex }};
 }
 
 .menu .item.selected .secondary, .menu .item:active .secondary {
-    color: #{{ surface0.hex }};
+    color: {{ surface0.hex }};
 }
 
 //Reply button
 .button-dropdown .primary-item, .button-dropdown .only-item {
-    background: -webkit-gradient(linear, left top, left bottom, from(#{{ surface0.hex }}), to(#{{ surface1.hex }}));
+    background: -webkit-gradient(linear, left top, left bottom, from({{ surface0.hex }}), to({{ surface1.hex }}));
 }
 
 .button-dropdown .secondary-picker {
-    background: -webkit-gradient(linear, left top, left bottom, from(#{{ surface0.hex }}), to(#{{ surface1.hex }}));
+    background: -webkit-gradient(linear, left top, left bottom, from({{ surface0.hex }}), to({{ surface1.hex }}));
 }
 
 .button-dropdown.open.open-down .secondary-items {
-    background: #{{ surface0.hex }}
+    background: {{ surface0.hex }}
 }
 
 //Composer unfocused
 #message-list .message-item-wrap .message-item-white-wrap.composer-outer-wrap {
-    background: #{{ surface0.hex }}
+    background: {{ surface0.hex }}
 }
 
 //Composer focused, borders
@@ -274,7 +274,7 @@ a {
 }
 
 .composer-inner-wrap .composer-action-bar-wrap .composer-action-bar-content.unfocused {
-    background-color: #{{ surface0.hex }};
+    background-color: {{ surface0.hex }};
 }
 
 //Unsubscribe action
@@ -290,12 +290,12 @@ a {
 
 //Preferences, accounts details, background colour
 .preferences-wrap .container-accounts .accounts-content .account-details {
-    background-color: #{{ base.hex }};
+    background-color: {{ base.hex }};
 }
 
 //Preferences, account lists, background colour
 .nylas-editable-list .items-wrapper {
-    background-color: #{{ surface0.hex }};
+    background-color: {{ surface0.hex }};
 }
 
 
@@ -335,7 +335,7 @@ a {
 #message-list {
 	// Labels
 	.mail-label.removable {
-		color: #{{ base.hex }} !important;
+		color: {{ base.hex }} !important;
 		background: @accent-primary !important;
     box-shadow: none !important;
 	}
